@@ -16,6 +16,36 @@ sf::RectangleShape Player::getShape()
   return m_Shape;
 }
 
-// TODO: move left, right, stop left, right, update
+void Player::moveLeft()
+{
+  m_MovingLeft = true;
+}
 
-// update(sf::Time dt)
+void Player::stopLeft()
+{
+  m_MovingLeft = false;
+}
+
+void Player::moveRight()
+{
+  m_MovingRight = true;
+}
+
+void Player::stopRight()
+{
+  m_MovingRight = false;
+}
+
+void Player::update(sf::Time dt)
+{
+  if (m_MovingLeft) 
+  {
+    m_Position -= m_Speed * dt; 
+  }
+  if (m_MovingRight)
+  {
+    m_Position += m_Speed * dt;
+  }
+
+  m_Shape.setPosition(m_Position);
+}
