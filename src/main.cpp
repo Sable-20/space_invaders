@@ -1,3 +1,4 @@
+#include "player.h"
 #include <SFML/Graphics.hpp>
 
 int main()
@@ -6,6 +7,8 @@ int main()
 
   // TODO: instantiate clock text etc
   sf::Clock clock;
+
+  Player player(400, 500);
 
   while (window.isOpen())
   {
@@ -21,9 +24,8 @@ int main()
     //////////////////////////
     // PLAYER INPUT HANDLING
     //////////////////////////
-    
-    // TODO add player input handling
 
+    // TODO add player input handling
 
     //////////////////////////
     // UPDATE HERE
