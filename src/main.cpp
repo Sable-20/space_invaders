@@ -26,6 +26,10 @@ int main()
       }
     }
 
+    // TODO: spawn multiple invaders
+    // TODO: make an invader class
+    // TODO: move invaders incrementally
+
 
     //////////////////////////
     // PLAYER INPUT HANDLING
