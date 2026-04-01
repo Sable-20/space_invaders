@@ -2,7 +2,7 @@
 
 Player::Player(float x, float y) : m_Position(x, y)
 {
-  m_Shape.setSize(sf::Vector2f({50,50}));
+  m_Shape.setSize(sf::Vector2f({25,25}));
   m_Shape.setPosition(m_Position);
 }
 
@@ -40,11 +40,11 @@ void Player::update(sf::Time dt)
 {
   if (m_MovingLeft) 
   {
-    m_Position -= m_Speed * dt; 
+    m_Position.x -= m_Speed * dt.asSeconds(); 
   }
   if (m_MovingRight)
   {
-    m_Position += m_Speed * dt;
+    m_Position.x += m_Speed * dt.asSeconds();
   }
 
   m_Shape.setPosition(m_Position);

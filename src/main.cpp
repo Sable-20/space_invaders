@@ -1,14 +1,19 @@
-#include "player.h"
 #include <SFML/Graphics.hpp>
+#include "player.h"
 
 int main()
 {
-  sf::RenderWindow window(sf::VideoMode({800, 600}), "Space Invaders", sf::Style::Default);
+  sf::RenderWindow window(sf::VideoMode({500, 800}), "Space Invaders", sf::Style::Default);
 
   // TODO: instantiate clock text etc
   sf::Clock clock;
 
-  Player player(400, 500);
+  sf::Texture spritesheet;
+  spritesheet.loadFromFile("./src/assets/invaders_sheet.png");
+  sf::Sprite invader(spritesheet);
+  invader.setTextureRect(sf::IntRect(sf::Vector2i(0, 0), sf::Vector2i(32, 32)));
+
+  Player player(200, 700);
 
   while (window.isOpen())
   {
@@ -21,20 +26,46 @@ int main()
       }
     }
 
+
     //////////////////////////
     // PLAYER INPUT HANDLING
     //////////////////////////
 
-    // TODO add player input handling
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape)) 
+    {
+      window.close();
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
+    {
+      player.moveLeft();
+    } else 
+    {
+      player.stopLeft();
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
+    {
+      player.moveRight();
+    } else
+    {
+      player.stopRight();
+    }
 
     //////////////////////////
     // UPDATE HERE
     //////////////////////////
 
+    player.update(dt);
+
     //////////////////////////
     // DRAWING
     //////////////////////////
     window.clear();
+
+    window.draw(player.getShape());
+    window.draw(invader);
+
     window.display();
   }
 }

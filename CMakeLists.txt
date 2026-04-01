@@ -14,5 +14,8 @@ FetchContent_Declare(SFML
   SYSTEM)
 FetchContent_MakeAvailable(SFML)
 
-add_executable(space src/main.cpp)
+add_executable(space 
+  src/main.cpp
+  src/player.cpp
+  src/player.h)
 target_link_libraries(space PRIVATE SFML::Graphics)
